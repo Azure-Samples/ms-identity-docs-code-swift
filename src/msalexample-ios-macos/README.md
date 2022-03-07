@@ -45,7 +45,7 @@ Use these settings in your app registration.
 | **Name**                        | `active-directory-swift-ios-macos-authorization-code-grant-flow`    | Suggested value for this sample. <br/> You can change the app name at any time. |
 | **Supported account types**     | **Accounts in this organizational directory only (Single tenant)**  | Suggested value for this sample.                                                |
 | **Platform type**               | **iOS / macOS **                                                    | Required value for this sample                                                  |
-| **Redirect URIs**               | `msauth.com.microsoft.msalExample-macOS://auth` and `msauth.com.microsoft.msalExample-iOS://auth` | Required value for this sample                    |
+| **Redirect URIs**               | `msauth.com.contoso.msalExample-macOS://auth` and `msauth.com.contoso.msalExample-iOS://auth` | Required value for this sample                    |
 
 > :information_source: **Bold text** in the tables above matches (or is similar to) a UI element in the Azure portal, while `code formatting` indicates a value you enter into a text box in the Azure portal.
 
