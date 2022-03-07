@@ -59,10 +59,10 @@ Finally, set the following values in _Shared/MSALAuthentication.swift_.
 
 ```csharp
 // 'Application (client) ID' of app registration in Azure portal - this value is a GUID
-private static let kClientId = "APPLICATION_(CLIENT)_ID"
+private static let kClientId = ""
 
 // 'Tenant ID' of your Azure AD instance - this value is a GUID
-private static let kTenantId = "TENANT_ID"
+private static let kTenantId = ""
 ```
 
 ## Run the application

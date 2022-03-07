@@ -1,8 +1,8 @@
 import MSAL
 
 class MSALAuthentication {
-    private static let kClientId = "APPLICATION_(CLIENT)_ID"
-    private static let kTenantId = "TENANT_ID"
+    private static let kClientId = ""
+    private static let kTenantId = ""
     private static let kAuthority = "https://login.microsoftonline.com/"
     
     private static var kApplication: MSALPublicClientApplication?
