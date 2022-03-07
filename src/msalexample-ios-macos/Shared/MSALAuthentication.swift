@@ -3,12 +3,11 @@ import MSAL
 class MSALAuthentication {
     private static let kClientId = ""
     private static let kTenantId = ""
-    private static let kAuthority = "https://login.microsoftonline.com/"
     
     private static var kApplication: MSALPublicClientApplication?
     
     public static func Signin(_ webviewParameters: MSALWebviewParameters, completion: @escaping (MSALAccount?, _ accessToken: String?, Error?) -> Void) {
-        let authority = try? MSALB2CAuthority(url: URL(string: "\(kAuthority)\(kTenantId)")!)
+        let authority = try? MSALB2CAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
         let config = MSALPublicClientApplicationConfig(clientId: kClientId, redirectUri: nil, authority: authority)
         
         kApplication = try? MSALPublicClientApplication(configuration: config)
