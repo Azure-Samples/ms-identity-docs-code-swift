@@ -12,7 +12,6 @@ class MSALAuthentication {
         
         kApplication = try? MSALPublicClientApplication(configuration: config)
         
-        let webviewParameters = webviewParameters
         let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["user.read"], webviewParameters: webviewParameters)
         
         kApplication?.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
