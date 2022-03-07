@@ -57,7 +57,7 @@ Next, open the _msalexamples-ios-macos.xcodeproj_ project in Xcode.
 
 Finally, set the following values in _Shared/MSALAuthentication.swift_.
 
-```csharp
+```swift
 // 'Application (client) ID' of app registration in Azure portal - this value is a GUID
 private static let kClientId = ""
 
@@ -67,13 +67,7 @@ private static let kTenantId = ""
 
 ## Run the application
 
-iOS
-
-Select any iOS simulator and then press :arrow_forward: 
-
-macOS
-
-Select My Mac and then press :arrow_forward: 
+Select My Mac or any iOS simulator and then press :arrow_forward: 
 
 The appliction will open allowing you to click the **Sign In** button to use the authentication flow.
 
