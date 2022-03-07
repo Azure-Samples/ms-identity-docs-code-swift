@@ -7,7 +7,7 @@ class MSALAuthentication {
     private static var kApplication: MSALPublicClientApplication?
     
     public static func Signin(_ webviewParameters: MSALWebviewParameters, completion: @escaping (MSALAccount?, _ accessToken: String?, Error?) -> Void) {
-        let authority = try? MSALB2CAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
+        let authority = try? MSALAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
         let config = MSALPublicClientApplicationConfig(clientId: kClientId, redirectUri: nil, authority: authority)
         
         kApplication = try? MSALPublicClientApplication(configuration: config)
