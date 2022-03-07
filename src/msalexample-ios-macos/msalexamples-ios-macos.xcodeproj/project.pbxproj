@@ -19,8 +19,6 @@
 		64F97FEC27C9184800D7C30F /* MicrosoftLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F97FEB27C9184800D7C30F /* MicrosoftLoginView.swift */; };
 		64F97FEE27C9184B00D7C30F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64F97FED27C9184B00D7C30F /* Assets.xcassets */; };
 		64F97FF127C9184B00D7C30F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64F97FF027C9184B00D7C30F /* Preview Assets.xcassets */; };
-		64F97FF927C9199500D7C30F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64F97FF827C9199500D7C30F /* Preview Assets.xcassets */; };
-		64F97FFA27C9199500D7C30F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64F97FF827C9199500D7C30F /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +35,6 @@
 		64F97FED27C9184B00D7C30F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64F97FF027C9184B00D7C30F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		64F97FF227C9184B00D7C30F /* msalexample_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = msalexample_macos.entitlements; sourceTree = "<group>"; };
-		64F97FF827C9199500D7C30F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,17 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				6479384D27D174AD003DE56F /* MSALAuthentication.swift */,
-				64F97FF727C9194800D7C30F /* Preview Content */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		64F97FF727C9194800D7C30F /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				64F97FF827C9199500D7C30F /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +221,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64F97FF927C9199500D7C30F /* Preview Assets.xcassets in Resources */,
 				64F97FDD27C917E300D7C30F /* Preview Assets.xcassets in Resources */,
 				64F97FDA27C917E300D7C30F /* Assets.xcassets in Resources */,
 			);
@@ -244,7 +231,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				64F97FF127C9184B00D7C30F /* Preview Assets.xcassets in Resources */,
-				64F97FFA27C9199500D7C30F /* Preview Assets.xcassets in Resources */,
 				64F97FEE27C9184B00D7C30F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
