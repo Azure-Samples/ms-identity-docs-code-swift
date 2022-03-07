@@ -21,7 +21,7 @@ class MicrosoftLoginViewController: UIViewController {
         
         let loginoutButton = UIButton(frame: CGRect(x: 20, y: self.view.frame.height - 100, width: self.view.frame.width - 40, height: 52))
         loginoutButton.backgroundColor = .systemBlue
-        loginoutButton.setTitle("Login", for: .normal)
+        loginoutButton.setTitle("Sign In", for: .normal)
         loginoutButton.setTitleColor(.white, for: .normal)
         loginoutButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         self.view.addSubview(loginoutButton)
@@ -36,7 +36,7 @@ class MicrosoftLoginViewController: UIViewController {
 
                 DispatchQueue.main.async {
                     self.isAuthenticated = true
-                    sender.setTitle("Logout", for: .normal)
+                    sender.setTitle("Sign Out", for: .normal)
                 }
             })
         }
@@ -48,7 +48,7 @@ class MicrosoftLoginViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.isAuthenticated = false
-                    sender.setTitle("Login", for: .normal)
+                    sender.setTitle("Sign In", for: .normal)
                 }
             })
         }

@@ -29,14 +29,8 @@ struct MicrosoftLoginView: View {
                     })
                 }
             } label: {
-                isAuthenticated ? Text("Logout") : Text("Login")
+                isAuthenticated ? Text("Sign Out") : Text("Sign In")
             }
         }.frame(width: 800, height: 600)
-    }
-}
-
-struct MicrosoftLoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        MicrosoftLoginView()
     }
 }
