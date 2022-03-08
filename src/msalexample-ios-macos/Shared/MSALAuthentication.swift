@@ -17,6 +17,9 @@ class MSALAuthentication {
         
         let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["user.read"], webviewParameters: webviewParameters)
         
+        // If access token acquisition needs to happen multiple times in
+        // iOS or macOS, only call this after checking for a cached token via
+        // a call to kApplication?.acquireTokenSilent(with: MSALSilentTokenParameters).
         kApplication?.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
             guard let authResult = result, error == nil else {
                 print(error!.localizedDescription)
