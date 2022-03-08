@@ -7,20 +7,20 @@ class MSALAuthentication {
     // 'Tenant ID' of your Azure AD instance - this value is a GUID
     private static let kTenantId = ""
     
-    private static var kApplication: MSALPublicClientApplication?
+    private static var kAuthority = try! MSALAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
+    private static var kConfig = MSALPublicClientApplicationConfig(clientId: kClientId, redirectUri: nil, authority: kAuthority)
+    // In order to take advantage of token caching, your MSAL client singleton must
+    // have a lifecycle that at least matches the lifecycle of the user's session in
+    // the app.
+    private static var kApplication: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
     
     public static func Signin(_ webviewParameters: MSALWebviewParameters, completion: @escaping (MSALAccount?, _ accessToken: String?, Error?) -> Void) {
-        let authority = try? MSALAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
-        let config = MSALPublicClientApplicationConfig(clientId: kClientId, redirectUri: nil, authority: authority)
-        
-        kApplication = try? MSALPublicClientApplication(configuration: config)
-        
         let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["user.read"], webviewParameters: webviewParameters)
-        
+
         // If access token acquisition needs to happen multiple times in
         // iOS or macOS, only call this after checking for a cached token via
         // a call to kApplication?.acquireTokenSilent(with: MSALSilentTokenParameters).
-        kApplication?.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
+        kApplication.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
             guard let authResult = result, error == nil else {
                 print(error!.localizedDescription)
                 
@@ -36,7 +36,7 @@ class MSALAuthentication {
         let msalParams = MSALAccountEnumerationParameters()
         msalParams.returnOnlySignedInAccounts = true
         
-        kApplication?.accountsFromDevice(for: msalParams, completionBlock: { (accounts, error) in
+        kApplication.accountsFromDevice(for: msalParams, completionBlock: { (accounts, error) in
             guard let deviceAccounts = accounts, error == nil else {
                 print(error!.localizedDescription)
                 
@@ -45,7 +45,7 @@ class MSALAuthentication {
             }
             
             for account in deviceAccounts {
-                kApplication?.signout(with: account, signoutParameters: MSALSignoutParameters(webviewParameters: webviewParameters), completionBlock: { (success, error) in
+                kApplication.signout(with: account, signoutParameters: MSALSignoutParameters(webviewParameters: webviewParameters), completionBlock: { (success, error) in
                     if let error = error {
                         print(error.localizedDescription)
                         completion(error)
