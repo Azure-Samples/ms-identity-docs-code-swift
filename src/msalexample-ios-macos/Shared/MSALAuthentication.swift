@@ -20,8 +20,8 @@ class MSALAuthentication {
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
         let window = windowScene?.windows.first
-        // IMPORTANT: For this sample it is possible to use the root. Please consider disconvering the top one
-        // or pass an specific ViewController if required.
+        // IMPORTANT: For this sample it is possible to use the root, consider discovering the top one
+        // or passing a specific ViewController if required.
         let webviewParameters = MSALWebviewParameters(authPresentationViewController: window!.rootViewController!)
         #else
         let webviewParameters = MSALWebviewParameters()
@@ -30,8 +30,8 @@ class MSALAuthentication {
         let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["user.read"], webviewParameters: webviewParameters)
 
         // If access token acquisition needs to happen multiple times in
-        // iOS or macOS, only call this after checking for a cached token via
-        // a call to kApplication?.acquireTokenSilent(with: MSALSilentTokenParameters).
+        // the app, only call this after checking for a cached token via
+        // a call to kApplication.acquireTokenSilent(with: MSALSilentTokenParameters).
         kApplication.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
             guard let authResult = result, error == nil else {
                 print(error!.localizedDescription)
@@ -58,8 +58,8 @@ class MSALAuthentication {
             let scenes = UIApplication.shared.connectedScenes
             let windowScene = scenes.first as? UIWindowScene
             let window = windowScene?.windows.first
-            // IMPORTANT: For this sample it is possible to use the root. Please consider disconvering the top one
-            // or pass an specific ViewController if required.
+            // IMPORTANT: For this sample it is possible to use the root, consider discovering the top one
+            // or passing a specific ViewController if required.
             let webviewParameters = MSALWebviewParameters(authPresentationViewController: window!.rootViewController!)
             #else
             let webviewParameters = MSALWebviewParameters()
