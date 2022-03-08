@@ -4,7 +4,7 @@ import SwiftUI
 struct msalexample_iosApp: App {
     var body: some Scene {
         WindowGroup {
-            MicrosoftLoginControllerRepresentable()
+            MicrosoftLoginView()
         }
     }
 }

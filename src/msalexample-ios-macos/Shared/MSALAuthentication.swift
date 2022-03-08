@@ -9,12 +9,24 @@ class MSALAuthentication {
     
     private static let kAuthority = try! MSALB2CAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
     private static let kConfig = MSALPublicClientApplicationConfig(clientId: kClientId, redirectUri: nil, authority: kAuthority)
+
     // In order to take advantage of token caching, your MSAL client singleton must
     // have a lifecycle that at least matches the lifecycle of the user's session in
     // the app.
     private static let kApplication: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
     
-    public static func Signin(_ webviewParameters: MSALWebviewParameters, completion: @escaping (MSALAccount?, _ accessToken: String?, Error?) -> Void) {
+    public static func Signin(completion: @escaping (MSALAccount?, _ accessToken: String?, Error?) -> Void) {
+        #if os(iOS)
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        // IMPORTANT: For this sample it is possible to use the root. Please consider disconvering the top one
+        // or pass an specific ViewController if required.
+        let webviewParameters = MSALWebviewParameters(authPresentationViewController: window!.rootViewController!)
+        #else
+        let webviewParameters = MSALWebviewParameters()
+        #endif
+
         let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["user.read"], webviewParameters: webviewParameters)
 
         // If access token acquisition needs to happen multiple times in
@@ -32,7 +44,7 @@ class MSALAuthentication {
         })
     }
     
-    public static func Signout(_ webviewParameters: MSALWebviewParameters, completion: @escaping (Error?) -> Void) {
+    public static func Signout(completion: @escaping (Error?) -> Void) {
         let msalParams = MSALAccountEnumerationParameters()
         msalParams.returnOnlySignedInAccounts = true
         
@@ -43,7 +55,18 @@ class MSALAuthentication {
                 completion(error)
                 return
             }
-            
+
+            #if os(iOS)
+            let scenes = UIApplication.shared.connectedScenes
+            let windowScene = scenes.first as? UIWindowScene
+            let window = windowScene?.windows.first
+            // IMPORTANT: For this sample it is possible to use the root. Please consider disconvering the top one
+            // or pass an specific ViewController if required.
+            let webviewParameters = MSALWebviewParameters(authPresentationViewController: window!.rootViewController!)
+            #else
+            let webviewParameters = MSALWebviewParameters()
+            #endif
+
             for account in deviceAccounts {
                 kApplication.signout(with: account, signoutParameters: MSALSignoutParameters(webviewParameters: webviewParameters), completionBlock: { (success, error) in
                     if let error = error {
