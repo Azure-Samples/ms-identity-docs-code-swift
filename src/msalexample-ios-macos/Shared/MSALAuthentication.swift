@@ -7,7 +7,7 @@ class MSALAuthentication {
     // 'Tenant ID' of your Azure AD instance - this value is a GUID
     private static let kTenantId = ""
     
-    private static var kAuthority = try! MSALAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
+    private static var kAuthority = try! MSALB2CAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
     private static var kConfig = MSALPublicClientApplicationConfig(clientId: kClientId, redirectUri: nil, authority: kAuthority)
     // In order to take advantage of token caching, your MSAL client singleton must
     // have a lifecycle that at least matches the lifecycle of the user's session in
