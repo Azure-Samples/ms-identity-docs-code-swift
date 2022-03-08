@@ -15,10 +15,10 @@
 		64F97FDA27C917E300D7C30F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64F97FD927C917E300D7C30F /* Assets.xcassets */; };
 		64F97FDD27C917E300D7C30F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64F97FDC27C917E300D7C30F /* Preview Assets.xcassets */; };
 		64F97FEA27C9184800D7C30F /* msalexample_macosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F97FE927C9184800D7C30F /* msalexample_macosApp.swift */; };
-		64F97FEC27C9184800D7C30F /* MicrosoftLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F97FEB27C9184800D7C30F /* MicrosoftLoginView.swift */; };
 		64F97FEE27C9184B00D7C30F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64F97FED27C9184B00D7C30F /* Assets.xcassets */; };
 		64F97FF127C9184B00D7C30F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64F97FF027C9184B00D7C30F /* Preview Assets.xcassets */; };
-		64FFA26127D7D78B00EA4A6C /* MicrosoftLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F97FEB27C9184800D7C30F /* MicrosoftLoginView.swift */; };
+		64FFA26727D808CC00EA4A6C /* MicrosoftLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FFA26627D808CC00EA4A6C /* MicrosoftLoginView.swift */; };
+		64FFA26827D808CC00EA4A6C /* MicrosoftLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FFA26627D808CC00EA4A6C /* MicrosoftLoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +30,10 @@
 		64F97FDC27C917E300D7C30F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		64F97FE727C9184800D7C30F /* msalExample-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "msalExample-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F97FE927C9184800D7C30F /* msalexample_macosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = msalexample_macosApp.swift; sourceTree = "<group>"; };
-		64F97FEB27C9184800D7C30F /* MicrosoftLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MicrosoftLoginView.swift; path = "../msalExample-macOS/MicrosoftLoginView.swift"; sourceTree = "<group>"; };
 		64F97FED27C9184B00D7C30F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64F97FF027C9184B00D7C30F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		64F97FF227C9184B00D7C30F /* msalexample_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = msalexample_macos.entitlements; sourceTree = "<group>"; };
+		64FFA26627D808CC00EA4A6C /* MicrosoftLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicrosoftLoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +124,7 @@
 		64F97FF627C9186900D7C30F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				64F97FEB27C9184800D7C30F /* MicrosoftLoginView.swift */,
+				64FFA26627D808CC00EA4A6C /* MicrosoftLoginView.swift */,
 				6479384D27D174AD003DE56F /* MSALAuthentication.swift */,
 			);
 			path = Shared;
@@ -261,8 +261,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64FFA26127D7D78B00EA4A6C /* MicrosoftLoginView.swift in Sources */,
 				6479384E27D174AD003DE56F /* MSALAuthentication.swift in Sources */,
+				64FFA26727D808CC00EA4A6C /* MicrosoftLoginView.swift in Sources */,
 				64F97FD627C917E100D7C30F /* msalexample_iosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,7 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6479384F27D174AD003DE56F /* MSALAuthentication.swift in Sources */,
-				64F97FEC27C9184800D7C30F /* MicrosoftLoginView.swift in Sources */,
+				64FFA26827D808CC00EA4A6C /* MicrosoftLoginView.swift in Sources */,
 				64F97FEA27C9184800D7C30F /* msalexample_macosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
