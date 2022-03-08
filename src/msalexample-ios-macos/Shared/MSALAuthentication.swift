@@ -15,7 +15,7 @@ class MSALAuthentication {
     // the app.
     private static let kApplication: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
     
-    public static func Signin(completion: @escaping (MSALAccount?, _ accessToken: String?, Error?) -> Void) {
+    public static func signin(completion: @escaping (MSALAccount?, _ accessToken: String?, Error?) -> Void) {
         #if os(iOS)
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
@@ -44,7 +44,7 @@ class MSALAuthentication {
         })
     }
     
-    public static func Signout(completion: @escaping (Error?) -> Void) {
+    public static func signout(completion: @escaping (Error?) -> Void) {
         let msalParams = MSALAccountEnumerationParameters()
         msalParams.returnOnlySignedInAccounts = true
         
