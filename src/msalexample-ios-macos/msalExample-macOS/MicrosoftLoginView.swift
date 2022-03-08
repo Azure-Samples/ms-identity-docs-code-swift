@@ -11,11 +11,7 @@ struct MicrosoftLoginView: View {
             Text(graphResult)
             Button {
                 if (!isAuthenticated) {
-                    MSALAuthentication.signin(completion: { (account, securityToken, error) in
-                        if let _ = error {
-                            return
-                        }
-
+                    MSALAuthentication.signin(completion: { securityToken in
                         isAuthenticated.toggle()
 
                         guard let meUrl = URL(string: "https://graph.microsoft.com/v1.0/me") else {
@@ -44,14 +40,10 @@ struct MicrosoftLoginView: View {
                 else {
                     // IMPORTANT: this require keychain capabilities to be added and signed with a valid development certificate. For more information, please refer
                     // to https://github.com/AzureAD/microsoft-authentication-library-for-objc/tree/3bc25ad3c38c0f0044e3fc624a841ac4789478c0#macos-only-steps
-                    MSALAuthentication.signout(completion: { (error) in
-                        if let _ = error {
-                            return
-                        }
-
+                    MSALAuthentication.signout() { () in
                         isAuthenticated.toggle()
                         graphResult = ""
-                    })
+                    }
                 }
             } label: {
                 isAuthenticated ? Text("Sign Out") : Text("Sign In")

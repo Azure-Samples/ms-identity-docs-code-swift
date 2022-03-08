@@ -15,7 +15,7 @@ class MSALAuthentication {
     // the app.
     private static let kApplication: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
     
-    public static func signin(completion: @escaping (MSALAccount?, _ accessToken: String?, Error?) -> Void) {
+    public static func signin(completion: @escaping (_ accessToken: String?) -> Void) {
         #if os(iOS)
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
@@ -36,23 +36,21 @@ class MSALAuthentication {
             guard let authResult = result, error == nil else {
                 print(error!.localizedDescription)
                 
-                completion(nil, nil, error)
+                completion(nil)
                 return
             }
             
-            completion(authResult.account, authResult.accessToken, nil)
+            completion(authResult.accessToken)
         })
     }
     
-    public static func signout(completion: @escaping (Error?) -> Void) {
+    public static func signout(completion: @escaping () -> Void) {
         let msalParams = MSALAccountEnumerationParameters()
         msalParams.returnOnlySignedInAccounts = true
         
         kApplication.accountsFromDevice(for: msalParams, completionBlock: { (accounts, error) in
             guard let deviceAccounts = accounts, error == nil else {
                 print(error!.localizedDescription)
-                
-                completion(error)
                 return
             }
 
@@ -71,13 +69,12 @@ class MSALAuthentication {
                 kApplication.signout(with: account, signoutParameters: MSALSignoutParameters(webviewParameters: webviewParameters), completionBlock: { (success, error) in
                     if let error = error {
                         print(error.localizedDescription)
-                        completion(error)
                         return
                     }
                 })
             }
             
-            completion(nil)
+            completion()
         })
     }
 }
