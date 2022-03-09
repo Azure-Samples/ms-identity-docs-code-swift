@@ -1,5 +1,4 @@
 import SwiftUI
-import MSAL
 
 struct MicrosoftLoginView: View {
     @State private var isAuthenticated = false
