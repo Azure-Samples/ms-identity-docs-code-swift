@@ -13,7 +13,7 @@ class MSALAuthentication {
     // In order to take advantage of token caching, your MSAL client singleton must
     // have a lifecycle that at least matches the lifecycle of the user's session in
     // the app.
-    private static let kApplication: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
+    private static let kMSALClient: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
     
     public static func signin(completion: @escaping (_ accessToken: String?) -> Void) {
         #if os(iOS)
@@ -32,7 +32,7 @@ class MSALAuthentication {
         // If access token acquisition needs to happen multiple times in
         // the app, only call this after checking for a cached token via
         // a call to kApplication.acquireTokenSilent(with: MSALSilentTokenParameters).
-        kApplication.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
+        kMSALClient.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
             guard let authResult = result, error == nil else {
                 print(error!.localizedDescription)
                 
@@ -48,7 +48,7 @@ class MSALAuthentication {
         let msalParams = MSALAccountEnumerationParameters()
         msalParams.returnOnlySignedInAccounts = true
         
-        kApplication.accountsFromDevice(for: msalParams, completionBlock: { (accounts, error) in
+        kMSALClient.accountsFromDevice(for: msalParams, completionBlock: { (accounts, error) in
             guard let deviceAccounts = accounts, error == nil else {
                 print(error!.localizedDescription)
                 return
@@ -66,7 +66,7 @@ class MSALAuthentication {
             #endif
 
             for account in deviceAccounts {
-                kApplication.signout(with: account, signoutParameters: MSALSignoutParameters(webviewParameters: webviewParameters), completionBlock: { (success, error) in
+                kMSALClient.signout(with: account, signoutParameters: MSALSignoutParameters(webviewParameters: webviewParameters), completionBlock: { (success, error) in
                     if let error = error {
                         print(error.localizedDescription)
                         return
