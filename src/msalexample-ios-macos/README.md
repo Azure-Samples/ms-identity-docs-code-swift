@@ -24,13 +24,14 @@ urlFragment: ms-identity-docs-code-app-swift-multiplatform
 This Swift 5.5 Multiplatform SwiftUI iOS and macOS app authenticates a user and then makes a request to the Graph API as the authenticated user. The response to the request is presented to the user.
 
 ![A screenshot of a Swift 5.5 Multiplatform SwiftUI iOS app displaying a response from Microsoft Graph.](./ios-signout-app.png)
+
 ![A screenshot of a Swift 5.5 Multiplatform SwiftUI macOS app displaying a response from Microsoft Graph.](./macos-signout-app.png)
 
 ## Prerequisites
 
 - Azure Active Directory (Azure AD) tenant and the permissions or role required for managing app registrations in the tenant.
 - Xcode 13.2.1
-- Swift 5.5
+- Swift 5+
 
 ## Setup
 
@@ -67,18 +68,19 @@ private static let kTenantId = ""
 
 ## Run the application
 
-Select My Mac or any iOS simulator and then press :arrow_forward: 
+Select **My Mac** or any iOS simulator and then select :arrow_forward: 
 
-The appliction will open allowing you to click the **Sign In** button to use the authentication flow.
+The application will open, allowing you to click the **Sign In** button to initiate the authentication flow.
 
 ![A screenshot of a Swift 5.5 Multiplatform SwiftUI iOS app guiding the user to click the "Sign In" button.](./ios-signin-app.png)
+
 ![A screenshot of a Swift 5.5 Multiplatform SwiftUI macOS app guiding the user to click the "Sign In" button.](./macos-signin-app.png)
 
 ## About the code
 
 This Swift 5.5 Multiplatform iOS and macOS app presents a button that initiates an authentication flow using the Microsoft Authentication Library for iOS and macOS (MSAL). The user completes this flow in their default web browser or natively in iOS. Upon successful authentication, an HTTP GET request to the Microsoft Graph /me endpoint is issued with the user's access token in the HTTP header. The response from the GET request is then displayed to the user.
 
-This project use Swift Package Manager dependencies to reference `MSAL` from [AzureAD/microsoft-authentication-library-for-objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc). For more information, please refer to using [Swift Packages](https://github.com/AzureAD/microsoft-authentication-library-for-objc/tree/3bc25ad3c38c0f0044e3fc624a841ac4789478c0#using-swift-packages)
+This project uses Swift Package Manager dependencies to reference `MSAL` from [AzureAD/microsoft-authentication-library-for-objc](https://github.com/AzureAD/microsoft-authentication-library-for-objc). For more information, please refer to using [Swift Packages](https://github.com/AzureAD/microsoft-authentication-library-for-objc/tree/3bc25ad3c38c0f0044e3fc624a841ac4789478c0#using-swift-packages)
 
 ## Reporting problems
 
