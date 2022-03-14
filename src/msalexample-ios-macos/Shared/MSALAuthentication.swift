@@ -10,9 +10,8 @@ class MSALAuthentication {
     private static let kAuthority = try! MSALB2CAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
     private static let kConfig = MSALPublicClientApplicationConfig(clientId: kClientId, redirectUri: nil, authority: kAuthority)
 
-    // In order to take advantage of token caching, your MSAL client singleton must
-    // have a lifecycle that at least matches the lifecycle of the user's session in
-    // the app.
+    // To use token caching, your MSAL client singleton must have a lifecycle that
+    // at least matches the lifecycle of the user's session in the app.
     private static let kMSALClient: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
     
     public static func signin(completion: @escaping (_ accessToken: String?) -> Void) {
@@ -20,7 +19,7 @@ class MSALAuthentication {
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
         let window = windowScene?.windows.first
-        // IMPORTANT: For this sample it is possible to use the root, consider discovering the top one
+        // IMPORTANT: For this sample, it's possible to use the root window. Consider discovering the top one
         // or passing a specific ViewController if required.
         let webviewParameters = MSALWebviewParameters(authPresentationViewController: window!.rootViewController!)
         #else
@@ -58,7 +57,7 @@ class MSALAuthentication {
             let scenes = UIApplication.shared.connectedScenes
             let windowScene = scenes.first as? UIWindowScene
             let window = windowScene?.windows.first
-            // IMPORTANT: For this sample it is possible to use the root, consider discovering the top one
+            // IMPORTANT: For this sample, it's possible to use the root window. Consider discovering the top one
             // or passing a specific ViewController if required.
             let webviewParameters = MSALWebviewParameters(authPresentationViewController: window!.rootViewController!)
             #else
