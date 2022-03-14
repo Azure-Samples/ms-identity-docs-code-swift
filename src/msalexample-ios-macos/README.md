@@ -67,9 +67,23 @@ private static let kClientId = ""
 private static let kTenantId = ""
 ```
 
+### 4. Select a development team in the Signing & Capabilities editor
+
+1. Navigate to the `msalExamples-iOS` target under the project `msalexamples-ios-macos`.
+1. Select **Signing & Capabilities**.
+1. Under **Signing** > **Team**, click `Add Account...`.
+1. Follow the instructions using your Apple ID to add your account.
+1. Select the just added Apple ID account from the **Team** list.
+1. Navigate to the `msalExamples-macOS` target under the project `msalexamples-ios-macos`.
+1. Under **Signing** > **Team**, select the recently added Apple ID account.
+
+   > Note: This configuration is required for signing your applications that are making use of the Keychain Groups capabilities. For further information, please refer to [Keychain groups](https://docs.microsoft.com/azure/active-directory/develop/howto-v2-keychain-objc?tabs=objc).
+
 ## Run the application
 
 Select **My Mac** or any iOS simulator and then select :arrow_forward: 
+
+:warning: running the application for the first time kicks off a new build, and as part of this process you might be requested to enter the **"login", keychain password** to allow codesign access your Apple ID account key in your keychain.
 
 The application will open, allowing you to click the **Sign In** button to initiate the authentication flow.
 
