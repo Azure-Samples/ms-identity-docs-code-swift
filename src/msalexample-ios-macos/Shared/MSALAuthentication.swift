@@ -46,9 +46,8 @@ class MSALAuthentication {
     public static func signout(completion: @escaping () -> Void) {
         let msalParams = MSALAccountEnumerationParameters()
         msalParams.returnOnlySignedInAccounts = true
-        
-        kMSALClient.accountsFromDevice(for: msalParams, completionBlock: { (accounts, error) in
-            guard let deviceAccounts = accounts, error == nil else {
+        kMSALClient.getCurrentAccount(with: msalParams) { currentAccount, _, error in
+            guard let account = currentAccount, error == nil else {
                 print(error!.localizedDescription)
                 return
             }
@@ -64,16 +63,14 @@ class MSALAuthentication {
             let webviewParameters = MSALWebviewParameters()
             #endif
 
-            for account in deviceAccounts {
-                kMSALClient.signout(with: account, signoutParameters: MSALSignoutParameters(webviewParameters: webviewParameters), completionBlock: { (success, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                })
-            }
-            
+            kMSALClient.signout(with: account, signoutParameters: MSALSignoutParameters(webviewParameters: webviewParameters), completionBlock: { (success, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+            })
+
             completion()
-        })
+        }
     }
 }
