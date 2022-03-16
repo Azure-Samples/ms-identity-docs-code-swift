@@ -10,9 +10,7 @@ struct MicrosoftLoginView: View {
             Text(graphResult)
             Button {
                 if (!isAuthenticated) {
-                    MSALAuthentication.signin(completion: { securityToken, error in
-                        guard error == nil else {return}
-
+                    MSALAuthentication.signin(completion: { securityToken in
                         isAuthenticated.toggle()
 
                         guard let meUrl = URL(string: "https://graph.microsoft.com/v1.0/me") else {
@@ -39,9 +37,7 @@ struct MicrosoftLoginView: View {
                     })
                 }
                 else {
-                    MSALAuthentication.signout() { error in
-                        guard error == nil else {return}
-
+                    MSALAuthentication.signout() { () in
                         isAuthenticated.toggle()
 
                         graphResult = ""
