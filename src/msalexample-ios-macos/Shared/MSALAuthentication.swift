@@ -14,7 +14,7 @@ class MSALAuthentication {
     // at least matches the lifecycle of the user's session in the app.
     private static let kMSALClient: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
     
-    public static func signin(completion: @escaping (_ accessToken: String?) -> Void) {
+    public static func signin(completion: @escaping (String?, Error?) -> Void) {
         var cachedAccessToken: String? = nil
 
         // Ideally, you'd first attempt to use a cached access token if one was available. This will renew
@@ -42,8 +42,7 @@ class MSALAuthentication {
                         return
                     }
 
-                    // Unhandled NSError code.
-                    completion(nil)
+                    completion(nil, error)
                     return
                 }
 
@@ -53,7 +52,7 @@ class MSALAuthentication {
         }
 
         if cachedAccessToken != nil {
-            completion(cachedAccessToken)
+            completion(cachedAccessToken, nil)
             return
         }
         else {
@@ -69,26 +68,29 @@ class MSALAuthentication {
             #endif
 
             let interactiveParameters = MSALInteractiveTokenParameters(scopes: ["user.read"], webviewParameters: webviewParameters)
+            interactiveParameters.completionBlockQueue = DispatchQueue.main
             kMSALClient.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
                 guard let authResult = result, error == nil else {
                     print(error!.localizedDescription)
 
-                    completion(nil)
+                    completion(nil, error)
                     return
                 }
 
-                completion(authResult.accessToken)
+                completion(authResult.accessToken, nil)
                 return
             })
         }
     }
     
-    public static func signout(completion: @escaping () -> Void) {
+    public static func signout(completion: @escaping (Error?) -> Void) {
         let msalParams = MSALAccountEnumerationParameters()
         msalParams.returnOnlySignedInAccounts = true
         kMSALClient.getCurrentAccount(with: msalParams) { currentAccount, _, error in
             guard let account = currentAccount, error == nil else {
                 print(error!.localizedDescription)
+
+                completion(error)
                 return
             }
 
@@ -106,11 +108,13 @@ class MSALAuthentication {
             kMSALClient.signout(with: account, signoutParameters: MSALSignoutParameters(webviewParameters: webviewParameters), completionBlock: { (success, error) in
                 if let error = error {
                     print(error.localizedDescription)
+
+                    completion(error)
                     return
                 }
             })
 
-            completion()
+            completion(nil)
         }
     }
 }
