@@ -19,11 +19,12 @@
 
 /* Begin PBXFileReference section */
 		6407450127D13871006BC9C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6448E7A927E0DCB300DBDC9A /* msalExample-macOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "msalExample-macOS.entitlements"; sourceTree = "<group>"; };
+		6448E7AA27E0FFD500DBDC9A /* msalExample-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "msalExample-iOS.entitlements"; sourceTree = "<group>"; };
 		6479384D27D174AD003DE56F /* MSALAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSALAuthentication.swift; sourceTree = "<group>"; };
 		64F97FD327C917E100D7C30F /* msalExample-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "msalExample-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F97FE727C9184800D7C30F /* msalExample-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "msalExample-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64F97FE927C9184800D7C30F /* msalexample_app.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = msalexample_app.swift; sourceTree = "<group>"; };
-		64F97FF227C9184B00D7C30F /* msalexample_macos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = msalexample_macos.entitlements; sourceTree = "<group>"; };
 		64FFA26627D808CC00EA4A6C /* MicrosoftLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicrosoftLoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +78,7 @@
 		64F97FD427C917E100D7C30F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6448E7AA27E0FFD500DBDC9A /* msalExample-iOS.entitlements */,
 				6407450127D13871006BC9C0 /* Info.plist */,
 			);
 			path = iOS;
@@ -85,7 +87,7 @@
 		64F97FE827C9184800D7C30F /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				64F97FF227C9184B00D7C30F /* msalexample_macos.entitlements */,
+				6448E7A927E0DCB300DBDC9A /* msalExample-macOS.entitlements */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
