@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6415CD0E27D27E480024D025 /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 6415CD0D27D27E480024D025 /* MSAL */; };
 		6479384C27D16376003DE56F /* MSAL in Frameworks */ = {isa = PBXBuildFile; productRef = 6479384B27D16376003DE56F /* MSAL */; };
 		6479384E27D174AD003DE56F /* MSALAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479384D27D174AD003DE56F /* MSALAuthentication.swift */; };
 		6479384F27D174AD003DE56F /* MSALAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6479384D27D174AD003DE56F /* MSALAuthentication.swift */; };
@@ -41,7 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6415CD0E27D27E480024D025 /* MSAL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +109,6 @@
 			buildPhases = (
 				64F97FCF27C917E100D7C30F /* Sources */,
 				64F97FD027C917E100D7C30F /* Frameworks */,
-				64F97FD127C917E100D7C30F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -131,16 +128,14 @@
 			buildPhases = (
 				64F97FE327C9184800D7C30F /* Sources */,
 				64F97FE427C9184800D7C30F /* Frameworks */,
-				64F97FE527C9184800D7C30F /* Resources */,
-				64B6F07D27D2915C00F07BC7 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				64ADF98927E217DF0060B961 /* PBXTargetDependency */,
 			);
 			name = "msalExample-macOS";
 			packageProductDependencies = (
-				6415CD0D27D27E480024D025 /* MSAL */,
 			);
 			productName = "msalexample-macos";
 			productReference = 64F97FE727C9184800D7C30F /* msalExample-macOS.app */;
@@ -186,44 +181,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		64F97FD127C917E100D7C30F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		64F97FE527C9184800D7C30F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		64B6F07D27D2915C00F07BC7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			dependencyFile = "$(DERIVED_FILES_DIR)/$(INPUT_FILE_PATH).d";
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nrm -rf \"${CODESIGNING_FOLDER_PATH}/Contents/Frameworks/MSAL.framework\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		64F97FCF27C917E100D7C30F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -246,6 +203,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64ADF98927E217DF0060B961 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 64ADF98827E217DF0060B961 /* MSAL */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		64F97FA827C915EB00D7C30F /* Debug */ = {
@@ -622,12 +586,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6415CD0D27D27E480024D025 /* MSAL */ = {
+		6479384B27D16376003DE56F /* MSAL */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6479384727D162F1003DE56F /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */;
 			productName = MSAL;
 		};
-		6479384B27D16376003DE56F /* MSAL */ = {
+		64ADF98827E217DF0060B961 /* MSAL */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6479384727D162F1003DE56F /* XCRemoteSwiftPackageReference "microsoft-authentication-library-for-objc" */;
 			productName = MSAL;
