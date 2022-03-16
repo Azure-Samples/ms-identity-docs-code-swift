@@ -32,6 +32,7 @@ This Swift 5.5 Multiplatform SwiftUI iOS and macOS app authenticates a user and 
 - Azure Active Directory (Azure AD) tenant and the permissions or role required for managing app registrations in the tenant.
 - Xcode 13.2.1
 - Swift 5+
+- [Apple ID](https://help.apple.com/developer-account/#/devadf555df9)
 
 ## Setup
 
