@@ -14,7 +14,7 @@ class MSALAuthentication {
     // at least matches the lifecycle of the user's session in the app.
     private static let kMSALClient: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
     
-    public static func signin(completion: @escaping (_ accessToken: String?) -> Void) {
+    public static func signin(completion: @escaping (String?) -> Void) {
         var cachedAccessToken: String? = nil
 
         // Ideally, you'd first attempt to use a cached access token if one was available. This will renew
@@ -33,7 +33,7 @@ class MSALAuthentication {
             kMSALClient.acquireTokenSilent(with: silentParameters) { (result, error) in
                 guard let authResult = result, error == nil else {
 
-                let nsError = error! as NSError
+                    let nsError = error! as NSError
 
                     if (nsError.domain == MSALErrorDomain &&
                         nsError.code == MSALError.interactionRequired.rawValue) {
