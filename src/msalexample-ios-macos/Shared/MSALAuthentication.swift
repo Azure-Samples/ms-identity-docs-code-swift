@@ -14,8 +14,9 @@ class MSALAuthentication {
     // at least matches the lifecycle of the user's session in the app.
     private static let kMSALClient: MSALPublicClientApplication = try! MSALPublicClientApplication(configuration: kConfig)
     
-    public static func signin(completion: @escaping (String?) -> Void) {
+    public static func signin(completion: @escaping (String?, Bool?, Date?) -> Void) {
         var cachedAccessToken: String? = nil
+        var accessTokenExpiresOn: Date?
 
         // Ideally, you'd first attempt to use a cached access token if one was available. This will renew
         // existing, but expired access tokens if possible. This pattern would be what you'd use
@@ -43,17 +44,18 @@ class MSALAuthentication {
                     }
 
                     // Unhandled NSError code.
-                    completion(nil)
+                    completion(nil, nil, nil)
                     return
                 }
 
                 cachedAccessToken = authResult.accessToken
+                accessTokenExpiresOn = authResult.expiresOn
                 return
             }
         }
 
         if cachedAccessToken != nil {
-            completion(cachedAccessToken)
+            completion(cachedAccessToken, true, accessTokenExpiresOn)
             return
         }
         else {
@@ -73,11 +75,11 @@ class MSALAuthentication {
                 guard let authResult = result, error == nil else {
                     print(error!.localizedDescription)
 
-                    completion(nil)
+                    completion(nil, nil, nil)
                     return
                 }
 
-                completion(authResult.accessToken)
+                completion(authResult.accessToken, false, authResult.expiresOn)
                 return
             })
         }

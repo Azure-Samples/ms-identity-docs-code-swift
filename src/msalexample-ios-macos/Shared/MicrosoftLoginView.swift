@@ -3,48 +3,52 @@ import SwiftUI
 struct MicrosoftLoginView: View {
     @State private var isAuthenticated = false
     @State private var graphResult = ""
+    @State private var accessTokenSource = ""
 
     var body: some View {
         VStack {
-            Text("Welcome to the SwiftUI MSAL tutorial for iOS and macOS")
-            Text(graphResult)
             Button {
-                if (!isAuthenticated) {
-                    MSALAuthentication.signin(completion: { securityToken in
-                        isAuthenticated.toggle()
+                MSALAuthentication.signin(completion: { securityToken, isTokenCached, expiresOn in
+                    isAuthenticated = true
+                    accessTokenSource = "Access Token: \(isTokenCached! ? "Cached" : "Newly Acquired") Expires: \(expiresOn!)";
+                    guard let meUrl = URL(string: "https://graph.microsoft.com/v1.0/me") else {
+                        return
+                    }
 
-                        guard let meUrl = URL(string: "https://graph.microsoft.com/v1.0/me") else {
+                    var request = URLRequest(url: meUrl)
+                    request.httpMethod = "GET"
+                    request.addValue("Bearer \(securityToken!)", forHTTPHeaderField: "Authorization")
+
+                    URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+                        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, error == nil else {
+                            print(error!.localizedDescription)
                             return
                         }
 
-                        var request = URLRequest(url: meUrl)
-                        request.httpMethod = "GET"
-                        request.addValue("Bearer \(securityToken!)", forHTTPHeaderField: "Authorization")
-
-                        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
-                            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, error == nil else {
-                                print(error!.localizedDescription)
-                                return
-                            }
-
-                            if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers),
-                               let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) {
-                                graphResult = String(decoding: jsonData, as: UTF8.self)
-                            } else {
-                                print("An error has ocurred")
-                            }
-                        }).resume()
-                    })
-                }
-                else {
+                        if let json = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers),
+                           let jsonData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted) {
+                            graphResult = String(decoding: jsonData, as: UTF8.self)
+                        } else {
+                            print("An error has ocurred")
+                        }
+                    }).resume()
+                })
+            } label: {
+                Text("Sign In (If needed) & Call Graph")
+            }
+            if isAuthenticated {
+                Text("Microsoft Graph Response:")
+                Text(graphResult)
+                Text(accessTokenSource)
+                Button {
                     MSALAuthentication.signout() { () in
-                        isAuthenticated.toggle()
+                        isAuthenticated = false
 
                         graphResult = ""
                     }
+                } label: {
+                    Text("Sign Out")
                 }
-            } label: {
-                isAuthenticated ? Text("Sign Out") : Text("Sign In")
             }
         }
         #if os(macOS)
