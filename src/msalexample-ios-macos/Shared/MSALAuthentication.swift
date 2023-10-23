@@ -4,7 +4,7 @@ class MSALAuthentication {
     // 'Application (client) ID' of app registration in the Microsoft Entra admin center - this value is a GUID
     private static let kClientId = "Enter_the_Application_Id_Here"
 
-    // 'Tenant ID' of your Microsoft Entra ID instance - this value is a GUID
+    // 'Tenant ID' of your Microsoft Entra instance - this value is a GUID
     private static let kTenantId = "Enter_the_Tenant_ID_Here"
     
     private static let kAuthority = try! MSALB2CAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)

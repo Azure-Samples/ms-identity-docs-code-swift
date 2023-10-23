@@ -27,7 +27,7 @@ This Swift 5.5 Multiplatform SwiftUI iOS and macOS app authenticates a user and 
 
 ## Prerequisites
 
-- A Microsoft Entra ID tenant and the permissions or role required for managing app registrations in the tenant.
+- A Microsoft Entra tenant and the permissions or role required for managing app registrations in the tenant.
 - Xcode 13.2.1
 - Swift 5+
 - [Apple ID](https://help.apple.com/developer-account/#/devadf555df9)
@@ -61,7 +61,7 @@ Finally, set the following values in _Shared/MSALAuthentication.swift_.
 // 'Application (client) ID' of app registration in the Microsoft Entra admin center - this value is a GUID
 private static let kClientId = "Enter_the_Application_Id_Here"
 
-// 'Tenant ID' of your Microsoft Entra ID instance - this value is a GUID
+// 'Tenant ID' of your Microsoft Entra instance - this value is a GUID
 private static let kTenantId = "Enter_the_Tenant_ID_Here"
 ```
 
