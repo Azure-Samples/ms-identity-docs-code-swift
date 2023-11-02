@@ -1,6 +1,6 @@
 # Microsoft identity platform product documentation backing code
 
-This repo contains code used to directly support the product documentation for the [Microsoft identity platform](https://docs.microsoft.com/azure/active-directory/develop/). It is a mono-repo that contains all of the referenced tutorials relating to Swift-based implementations using the [Microsoft Autentication Library for iOS and macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc).
+This repo contains code used to directly support the product documentation for the [Microsoft identity platform](https://docs.microsoft.com/azure/active-directory/develop/). It is a mono-repo that contains all of the referenced tutorials relating to Swift-based implementations using the [Microsoft Authentication Library for iOS and macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc).
 
 ## Content
 

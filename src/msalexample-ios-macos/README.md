@@ -1,6 +1,6 @@
 ---
-# Metadata required by https://docs.microsoft.com/samples/browse/
-# Metadata properties: https://review.docs.microsoft.com/help/contribute/samples/process/onboarding?branch=main#add-metadata-to-readme
+# Metadata required by https://learn.microsoft.com/samples/browse/
+# Metadata properties: https://review.learn.microsoft.com/help/contribute/samples/process/onboarding?branch=main#add-metadata-to-readme
 languages:
 - swift 
 page_type: sample
@@ -27,7 +27,7 @@ This Swift 5.5 Multiplatform SwiftUI iOS and macOS app authenticates a user and 
 
 ## Prerequisites
 
-- Azure Active Directory (Azure AD) tenant and the permissions or role required for managing app registrations in the tenant.
+- A Microsoft Entra tenant and the permissions or role required for managing app registrations in the tenant.
 - Xcode 13.2.1
 - Swift 5+
 - [Apple ID](https://help.apple.com/developer-account/#/devadf555df9)
@@ -36,7 +36,7 @@ This Swift 5.5 Multiplatform SwiftUI iOS and macOS app authenticates a user and 
 
 ### 1. Register the app
 
-First, complete the steps in [Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-ios#register-your-application) to register the application.
+First, complete the steps in [Register an application with the Microsoft identity platform](https://learn.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-ios#register-your-application) to register the application.
 
 Use these settings in your app registration.
 
@@ -47,7 +47,7 @@ Use these settings in your app registration.
 | **Platform type**               | **iOS / macOS **                                                    | Required value for this sample                                                  |
 | **Redirect URIs**               | `msauth.com.contoso.msalExample-macOS://auth` and `msauth.com.contoso.msalExample-iOS://auth` | Required value for this sample                    |
 
-> :information_source: **Bold text** in the tables above matches (or is similar to) a UI element in the Azure portal, while `code formatting` indicates a value you enter into a text box in the Azure portal.
+> :information_source: **Bold text** in the tables above matches (or is similar to) a UI element in the  Microsoft Entra admin center, while `code formatting` indicates a value you enter into a text box in the Microsoft Entra admin center.
 
 ### 2. Open the project in Xcode 
 
@@ -58,24 +58,24 @@ Next, open the _msalexamples-ios-macos.xcodeproj_ project in Xcode.
 Finally, set the following values in _Shared/MSALAuthentication.swift_.
 
 ```swift
-// 'Application (client) ID' of app registration in Azure portal - this value is a GUID
-private static let kClientId = ""
+// 'Application (client) ID' of app registration in the Microsoft Entra admin center - this value is a GUID
+private static let kClientId = "Enter_the_Application_Id_Here"
 
-// 'Tenant ID' of your Azure AD instance - this value is a GUID
-private static let kTenantId = ""
+// 'Tenant ID' of your Microsoft Entra instance - this value is a GUID
+private static let kTenantId = "Enter_the_Tenant_ID_Here"
 ```
 
 ### 4. Select a development team in the Signing & Capabilities editor
 
-1. Navigate to the `msalExamples-iOS` target under the project `msalexamples-ios-macos`.
+1. Navigate to the *msalExamples-iOS* target under the project *msalexamples-ios-macos*.
 1. Select **Signing & Capabilities**.
-1. Under **Signing** > **Team**, click `Add Account...`.
+1. Under **Signing** > **Team**, select **Add Account...**.
 1. Follow the instructions using your Apple ID to add your account.
-1. Select the just added Apple ID account from the **Team** list.
-1. Navigate to the `msalExamples-macOS` target under the project `msalexamples-ios-macos`.
+1. Select the added Apple ID account from the **Team** list.
+1. Navigate to the *msalExamples-macOS* target under the project *msalexamples-ios-macos*.
 1. Under **Signing** > **Team**, select the recently added Apple ID account.
 
-   > Note: This configuration is required for signing your applications that are making use of the Keychain Groups capabilities. For further information, please refer to [Keychain groups](https://docs.microsoft.com/azure/active-directory/develop/howto-v2-keychain-objc?tabs=objc).
+   > Note: This configuration is required for signing your applications that are making use of the Keychain Groups capabilities. For further information, please refer to [Keychain groups](https://learn.microsoft.com/azure/active-directory/develop/howto-v2-keychain-objc?tabs=objc).
 
 ## Run the application
 
@@ -108,7 +108,7 @@ If you can't get the sample working, you've checked [Stack Overflow](http://stac
 
 > :warning: WARNING: Any issue in this repository _not_ limited to running one of its sample apps will be closed without being addressed.
 
-For all other requests, see [Support and help options for developers | Microsoft identity platform](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options).
+For all other requests, see [Support and help options for developers](https://learn.microsoft.com/azure/active-directory/develop/developer-support-help-options).
 
 ## Contributing
 

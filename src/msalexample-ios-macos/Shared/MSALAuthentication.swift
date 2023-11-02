@@ -1,11 +1,11 @@
 import MSAL
 
 class MSALAuthentication {
-    // 'Application (client) ID' of app registration in Azure portal - this value is a GUID
-    private static let kClientId = ""
+    // 'Application (client) ID' of app registration in the Microsoft Entra admin center - this value is a GUID
+    private static let kClientId = "Enter_the_Application_Id_Here"
 
-    // 'Tenant ID' of your Azure AD instance - this value is a GUID
-    private static let kTenantId = ""
+    // 'Tenant ID' of your Microsoft Entra instance - this value is a GUID
+    private static let kTenantId = "Enter_the_Tenant_ID_Here"
     
     private static let kAuthority = try! MSALB2CAuthority(url: URL(string: "https://login.microsoftonline.com/\(kTenantId)")!)
     private static let kConfig = MSALPublicClientApplicationConfig(clientId: kClientId, redirectUri: nil, authority: kAuthority)
@@ -39,7 +39,7 @@ class MSALAuthentication {
                     if (nsError.domain == MSALErrorDomain &&
                         nsError.code == MSALError.interactionRequired.rawValue) {
                         // Interactive auth will be required. No usable cached token was found for this scope + account
-                        // or simply Azure AD insists in an interactive user flow.
+                        // or simply Microsoft Entra ID insists in an interactive user flow.
                         return
                     }
 
